@@ -1,11 +1,11 @@
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import { merge } from 'webpack-merge';
 import commonConfiguration from './webpack.common.mjs';
 import { internalIpV4 } from 'internal-ip';
 import portFinderSync from 'portfinder-sync';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-// dir helper
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
