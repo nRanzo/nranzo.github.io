@@ -1,8 +1,13 @@
-import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import { merge } from 'webpack-merge';
 import commonConfiguration from './webpack.common.mjs';
-import ip from 'internal-ip';
+import { internalIpV4 } from 'internal-ip';
 import portFinderSync from 'portfinder-sync';
+
+// dir helper
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const infoColor = (_message) => {
     return `\u001b[1m\u001b[34m${_message}\u001b[39m\u001b[22m`;
@@ -30,10 +35,10 @@ export default merge(
                 overlay: true,
                 progress: false
             },
-            onAfterSetupMiddleware: function (devServer) {
+            onAfterSetupMiddleware: async function (devServer) {
                 const port = devServer.options.port;
                 const https = devServer.options.https ? 's' : '';
-                const localIp = ip.v4.sync();
+                const localIp = await internalIpV4();
                 const domain1 = `http${https}://${localIp}:${port}`;
                 const domain2 = `http${https}://localhost:${port}`;
                 
