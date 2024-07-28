@@ -2,8 +2,8 @@
   "repository": "#",
   "license": "CC0 1.0 Universal",
   "scripts": {
-    "build": "webpack --config ./bundler/webpack.prod.js",
-    "dev": "webpack serve --config ./bundler/webpack.dev.js",
+    "build": "webpack --config ./bundler/webpack.prod.mjs",
+    "dev": "webpack serve --config ./bundler/webpack.dev.mjs",
     "deploy": "vercel --prod"
   },
   "dependencies": {
@@ -18,6 +18,7 @@
     "howler": "^2.2.3",
     "html-loader": "^3.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "internal-ip": "^8.0.0",
     "lil-gui": "^0.11.0",
     "mini-css-extract-plugin": "^2.4.3",
     "portfinder-sync": "0.0.2",
